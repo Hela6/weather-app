@@ -53,7 +53,9 @@ main {
   justify-content: space-between;
   align-items: center;
 
-  .item {
+  .humidity,
+  .pressure,
+  .wind {
     display: flex;
     align-items: center;
     flex-direction: row;

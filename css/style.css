@@ -47,12 +47,16 @@ main section {
   justify-content: space-between;
   align-items: center;
 }
-.infos .item {
+.infos .humidity,
+.infos .pressure,
+.infos .wind {
   display: flex;
   align-items: center;
   flex-direction: row;
 }
-.infos .item img {
+.infos .humidity img,
+.infos .pressure img,
+.infos .wind img {
   display: none;
 }
 
