@@ -91,7 +91,7 @@ section#flex .hour {
 }
 
 /* NEXT DAYS PAGE */
-div .container {
+div.container {
   display: grid;
   grid-template-columns: repeat(2, 42vw);
   grid-template-rows: repeat(3, 42vw);
@@ -99,7 +99,7 @@ div .container {
   margin: 100px auto;
   gap: 2vw;
 }
-div .container div.days {
+div.container div.days {
   background: #26222c;
   border-radius: 20px;
   display: grid;
@@ -107,19 +107,19 @@ div .container div.days {
   grid-template-rows: 18vw 12vw 12vw;
   gap: 0;
 }
-div .container div.days p {
+div.container div.days p {
   justify-self: center;
   align-self: center;
 }
-div .container div.days p.temp {
+div.container div.days p.temp {
   font-size: 3em;
 }
-div .container div.days p.day_name {
+div.container div.days p.day_name {
   grid-column: span 2;
   font-size: 1.4em;
   padding-top: 6vw;
 }
-div .container div.days img {
+div.container div.days img {
   width: 15vw;
   height: 15vw;
   margin: 4vw 4vw auto auto;
