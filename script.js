@@ -1,4 +1,14 @@
 let city = document.querySelector(".localisation h2");
+// tableau des icones de météo
+let imgArrayDay = [
+    'images/sun.png',
+    'images/cloud.png',
+    'images/cloudy.png',
+    'images/rainy.png',
+    'images/storm.png',
+    'images/snowy.png',
+  ];
+
 
 // Alerte si la géolocalisation n'est pas activée
 if (navigator.geolocation) {
@@ -28,3 +38,4 @@ async function getWeatherData(long, lat) {
 
   city.innerHTML = `${data.city.name}`;
 }
+  
