@@ -91,3 +91,39 @@ justify-content: space-between;
     align-items: center;
   }
 }
+
+/* NEXT DAYS PAGE */
+
+div .container {
+  display: grid;
+  grid-template-columns: repeat(2,42vw);
+  grid-template-rows: repeat(3,42vw);
+  justify-content: center;
+  margin: 100px auto;
+  gap: 2vw;
+  div.days{
+      background: #26222c;
+      border-radius: 20px;
+      display: grid;
+      grid-template-columns: 21vw 21vw;
+      grid-template-rows: 18vw 12vw 12vw;
+      gap: 0;
+      p{
+          justify-self: center;
+          align-self: center;
+          &.temp {
+              font-size: 3em;
+          }
+          &.day_name {
+          grid-column: span 2;
+          font-size: 1.4em;
+          padding-top: 6vw;
+      }
+      }
+      img {
+          width: 15vw;
+          height: 15vw;
+          margin: 4vw 4vw auto auto;
+      }
+  }
+}
