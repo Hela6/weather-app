@@ -7,10 +7,6 @@
   color: #fff;
 }
 
-html {
-  position: relative;
-}
-
 body {
   background-color: #081b24;
 }
@@ -43,12 +39,7 @@ main section {
   background-color: grey;
 }
 .daily-meteo img {
-  width: 100vw;
-  position: absolute;
-  top: -10%;
-  right: -50%;
-  z-index: -1;
-  overflow: hidden;
+  width: 50%;
 }
 
 .infos {
@@ -61,11 +52,17 @@ main section {
   align-items: center;
   flex-direction: row;
 }
+.infos .item img {
+  display: none;
+}
 
 .sun {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.sun img {
+  display: none;
 }
 .sun__rise {
   display: flex;
@@ -76,22 +73,25 @@ main section {
   align-items: center;
 }
 
-section#flex {
+section#temp-hours {
   display: flex;
-  flex-flow: row wrap;
+  flex-direction: row;
   justify-content: space-between;
+  gap: 1em;
 }
-section#flex h4 {
-  flex-basis: 100%;
-}
-section#flex .hour {
+section#temp-hours .hour {
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex-grow: 1;
+  gap: 0.5em;
+}
+section#temp-hours .hour img {
+  width: 100%;
 }
 
 /* NEXT DAYS PAGE */
-div .container {
+div.container {
   display: grid;
   grid-template-columns: repeat(2, 42vw);
   grid-template-rows: repeat(3, 42vw);
@@ -99,7 +99,7 @@ div .container {
   margin: 100px auto;
   gap: 2vw;
 }
-div .container div.days {
+div.container div.days {
   background: #26222c;
   border-radius: 20px;
   display: grid;
@@ -107,19 +107,19 @@ div .container div.days {
   grid-template-rows: 18vw 12vw 12vw;
   gap: 0;
 }
-div .container div.days p {
+div.container div.days p {
   justify-self: center;
   align-self: center;
 }
-div .container div.days p.temp {
+div.container div.days p.temp {
   font-size: 3em;
 }
-div .container div.days p.day_name {
+div.container div.days p.day_name {
   grid-column: span 2;
   font-size: 1.4em;
   padding-top: 6vw;
 }
-div .container div.days img {
+div.container div.days img {
   width: 15vw;
   height: 15vw;
   margin: 4vw 4vw auto auto;

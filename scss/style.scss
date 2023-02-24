@@ -9,10 +9,6 @@
   color: $secondary-color;
 }
 
-html {
-  position:relative;
-}
-
 body {
   background-color: $primary-color;
 }
@@ -21,9 +17,10 @@ body {
 main {
   width: 80%;
   height: 100vh;
-  margin:2em auto;
+  margin: 2em auto;
+
   section {
-    padding:2em 0;
+    padding: 2em 0;
   }
 }
 
@@ -32,9 +29,11 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  .localisation > p:nth-child(2) {
+
+  .localisation>p:nth-child(2) {
     font-size: 3em;
   }
+
   .localisation button {
     border: none;
     background: none;
@@ -43,13 +42,9 @@ main {
     height: 30px;
     background-color: grey;
   }
-  img{
-    width: 100vw;
-    position:absolute;
-    top:-10%;
-    right:-50%;
-    z-index: -1;
-    overflow: hidden;
+
+  img {
+    width: 50%;
   }
 }
 
@@ -57,73 +52,94 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   .item {
     display: flex;
     align-items: center;
     flex-direction: row;
+
+    img {
+      display: none;
+    }
   }
 }
 
 .sun {
+  img {
+    display: none;
+  }
+
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   &__rise {
     display: flex;
-    align-items:center;
+    align-items: center;
   }
+
   &__set {
     display: flex;
     align-items: center;
   }
 }
 
-section#flex {
-display: flex;
-flex-flow:row wrap;
-justify-content: space-between;
-  h4{
-    flex-basis: 100%;
-  }
+section#temp-hours {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1em;
+
   .hour {
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex-grow: 1;
+    gap: 0.5em;
+
+    img {
+      width: 100%;
+    }
   }
 }
 
 /* NEXT DAYS PAGE */
 
-div .container {
+div.container {
   display: grid;
-  grid-template-columns: repeat(2,42vw);
-  grid-template-rows: repeat(3,42vw);
+  grid-template-columns: repeat(2, 42vw);
+  grid-template-rows: repeat(3, 42vw);
   justify-content: center;
   margin: 100px auto;
   gap: 2vw;
-  div.days{
-      background: #26222c;
-      border-radius: 20px;
-      display: grid;
-      grid-template-columns: 21vw 21vw;
-      grid-template-rows: 18vw 12vw 12vw;
-      gap: 0;
-      p{
-          justify-self: center;
-          align-self: center;
-          &.temp {
-              font-size: 3em;
-          }
-          &.day_name {
-          grid-column: span 2;
-          font-size: 1.4em;
-          padding-top: 6vw;
+
+  div.days {
+    background: #26222c;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: 21vw 21vw;
+    grid-template-rows: 18vw 12vw 12vw;
+    gap: 0;
+
+    p {
+      justify-self: center;
+      align-self: center;
+
+      &.temp {
+        font-size: 3em;
       }
+
+      &.day_name {
+        grid-column: span 2;
+        font-size: 1.4em;
+        padding-top: 6vw;
       }
-      img {
-          width: 15vw;
-          height: 15vw;
-          margin: 4vw 4vw auto auto;
-      }
+    }
+
+    img {
+      width: 15vw;
+      height: 15vw;
+      margin: 4vw 4vw auto auto;
+    }
   }
 }
