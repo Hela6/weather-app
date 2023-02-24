@@ -21,5 +21,19 @@ async function getWeatherData(long, lat){
   
     
   }
+
+  
+
+// tableau des icones de météo
+let imgArrayDay = [
+    'images/sun.png',
+    'images/cloud.png',
+    'images/cloudy.png',
+    'images/rainy.png',
+    'images/storm.png',
+    'images/snowy.png',
+  ];
+ 
+
   
   
