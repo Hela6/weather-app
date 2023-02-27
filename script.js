@@ -6,6 +6,8 @@ let pressure = document.querySelector(".pressure p");
 let wind = document.querySelector(".wind p");
 let sunrise = document.querySelector(".sun__rise");
 let sunset = document.querySelector(".sun__set");
+let today = document.querySelector('h4');
+
 // tableau des icones de météo
 let imgArrayDay = [
   "images/sun.png",
@@ -49,10 +51,19 @@ async function getWeatherData(long, lat) {
   pressure.innerHTML = `${data.list[0].main.pressure} mBar`;
   wind.innerHTML = `${data.list[0].wind.speed} km`;
 
-  let unixTime = `${data.city.sunrise}` || `${data.city.sunset}`;
-  let date = new Date(unixTime * 1000);
-  let hours = date.getHours();
-  let minutes = date.getMinutes();
-  sunrise.innerHTML = hours + ":" + minutes.toLocaleString();
-  sunset.innerHTML = hours + ":" + minutes.toLocaleString();
+  function formatTime(unixTime) {
+    let date = new Date(unixTime * 1000);
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    return `${hours}:${minutes.toLocaleString()}`;
+  }
+  
+  let sunriseTime = `${data.city.sunrise}` && formatTime(data.city.sunrise);
+  let sunsetTime = `${data.city.sunset}` && formatTime(data.city.sunset);
+  
+  sunrise.innerHTML = sunriseTime || "N/A";
+  sunset.innerHTML = sunsetTime || "N/A";
+
+  today.innerHTML = new Date().toLocaleDateString("fr-FR", {day: "numeric", month: "long", year: "numeric"});
+  
 }
