@@ -12,12 +12,12 @@ let section = document.querySelector("#temp-hours");
 
 // TEMP ICONS
 let imgArrayDay = [
-  "images/sun.png",
-  "images/cloud.png",
-  "images/cloudy.png",
-  "images/rainy.png",
-  "images/storm.png",
-  "images/snowy.png",
+  "./img/sun.png",
+  "./img/cloud.png",
+  "./img/cloudy.png",
+  "./img/rainy.png",
+  "./img/storm.png",
+  "./img/snowy.png",
 ];
 
 // IS GEOLOCALISATION ON ?
@@ -45,7 +45,7 @@ async function getWeatherData(long, lat) {
   const data = await results.json();
 
   console.log(data);
-  
+
   // INJECT DATA
   city.innerHTML = `${data.city.name}`;
   temp.innerHTML = Math.floor(`${data.list[0].main.temp}`) + "&deg;";
@@ -54,19 +54,18 @@ async function getWeatherData(long, lat) {
   pressure.innerHTML = `${data.list[0].main.pressure} mBar`;
   wind.innerHTML = `${data.list[0].wind.speed} km`;
 
-
-  // FUNCTION TO CONVERT UNIX TIME TO TIME FORMAT 
+  // FUNCTION TO CONVERT UNIX TIME TO TIME FORMAT
   const convertTime = function formatTime(unixTime) {
     let date = new Date(unixTime * 1000);
     let hours = date.getHours();
     let minutes = date.getMinutes();
-    if(date.getMinutes() === 0){
+    if (date.getMinutes() === 0) {
       date.getHours();
       return `${hours}h`;
     } else {
       return `${hours}h${minutes.toLocaleString()}`;
     }
-  }
+  };
 
   // DISPLAY SUNRISE AND SUNSET TIME
   let sunriseTime = `${data.city.sunrise}` && convertTime(data.city.sunrise);
@@ -75,12 +74,14 @@ async function getWeatherData(long, lat) {
   sunrise.innerHTML = sunriseTime || "N/A";
   sunset.innerHTML = sunsetTime || "N/A";
 
-  // DISPLAY TODAY 
-  today.innerHTML = new Date().toLocaleDateString("fr-FR", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
+  // DISPLAY TODAY
+  today.innerHTML =
+    "Le " +
+    new Date().toLocaleDateString("fr-FR", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
 
   // DISPLAY EVERY NEXT 3 HOURS
   for (let i = 0; i < 5; i++) {
@@ -88,9 +89,21 @@ async function getWeatherData(long, lat) {
     div.classList.add("hour");
     div.innerHTML = `
     <p>${convertTime(data.list[i].dt)}</p>
-    <img src="./img/meteo.png" alt="">
+    ${weatherConditions(data.list[i].weather[0].main)}
     <p>${Math.floor(data.list[i].main.temp)}&deg;</p>
     `;
     section.append(div);
+  }
+  // WEATHER CONDITIONS
+  function weatherConditions(weatherPath) {
+    let image = document.createElement("img");
+    if (weatherPath === "Clouds") {
+      image.src = imgArrayDay[0];
+    } else if (weatherPath === "Clear") {
+      image.src = imgArrayDay[1];
+    } else {
+      console.log("Coucou je passe par là");
+    }
+    return image;
   }
 }
