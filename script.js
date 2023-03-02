@@ -6,9 +6,11 @@ let pressure = document.querySelector(".pressure p");
 let wind = document.querySelector(".wind p");
 let sunrise = document.querySelector(".sun__rise");
 let sunset = document.querySelector(".sun__set");
-let today = document.querySelector('h4');
+let today = document.querySelector("h4");
+let hour = document.querySelectorAll(".hour");
+let section = document.querySelector("#temp-hours");
 
-// tableau des icones de météo
+// TEMP ICONS
 let imgArrayDay = [
   "images/sun.png",
   "images/cloud.png",
@@ -18,7 +20,7 @@ let imgArrayDay = [
   "images/snowy.png",
 ];
 
-// Alerte si la géolocalisation n'est pas activée
+// IS GEOLOCALISATION ON ?
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(
     (location) => {
@@ -34,7 +36,7 @@ if (navigator.geolocation) {
   );
 }
 
-// Aller chercher les infos de l'API
+// FETCHING API'S DATAS
 async function getWeatherData(long, lat) {
   const results = await fetch(
     `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=fe35c835835665f437392d7d087543f3&units=metric&cnt=40&lang=fr`
@@ -43,7 +45,8 @@ async function getWeatherData(long, lat) {
   const data = await results.json();
 
   console.log(data);
-
+  
+  // INJECT DATA
   city.innerHTML = `${data.city.name}`;
   temp.innerHTML = Math.floor(`${data.list[0].main.temp}`) + "&deg;";
   weather.innerHTML = `${data.list[0].weather[0].main}`;
@@ -51,19 +54,43 @@ async function getWeatherData(long, lat) {
   pressure.innerHTML = `${data.list[0].main.pressure} mBar`;
   wind.innerHTML = `${data.list[0].wind.speed} km`;
 
-  function formatTime(unixTime) {
+
+  // FUNCTION TO CONVERT UNIX TIME TO TIME FORMAT 
+  const convertTime = function formatTime(unixTime) {
     let date = new Date(unixTime * 1000);
     let hours = date.getHours();
     let minutes = date.getMinutes();
-    return `${hours}:${minutes.toLocaleString()}`;
+    if(date.getMinutes() === 0){
+      date.getHours();
+      return `${hours}h`;
+    } else {
+      return `${hours}h${minutes.toLocaleString()}`;
+    }
   }
-  
-  let sunriseTime = `${data.city.sunrise}` && formatTime(data.city.sunrise);
-  let sunsetTime = `${data.city.sunset}` && formatTime(data.city.sunset);
-  
+
+  // DISPLAY SUNRISE AND SUNSET TIME
+  let sunriseTime = `${data.city.sunrise}` && convertTime(data.city.sunrise);
+  let sunsetTime = `${data.city.sunset}` && convertTime(data.city.sunset);
+
   sunrise.innerHTML = sunriseTime || "N/A";
   sunset.innerHTML = sunsetTime || "N/A";
 
-  today.innerHTML = new Date().toLocaleDateString("fr-FR", {day: "numeric", month: "long", year: "numeric"});
-  
+  // DISPLAY TODAY 
+  today.innerHTML = new Date().toLocaleDateString("fr-FR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+
+  // DISPLAY EVERY NEXT 3 HOURS
+  for (let i = 0; i < 5; i++) {
+    let div = document.createElement("div");
+    div.classList.add("hour");
+    div.innerHTML = `
+    <p>${convertTime(data.list[i].dt)}</p>
+    <img src="./img/meteo.png" alt="">
+    <p>${Math.floor(data.list[i].main.temp)}&deg;</p>
+    `;
+    section.append(div);
+  }
 }
