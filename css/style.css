@@ -57,7 +57,7 @@ main section {
 .infos .humidity img,
 .infos .pressure img,
 .infos .wind img {
-  display: none;
+  width: 15px;
 }
 
 .sun {
@@ -66,15 +66,17 @@ main section {
   align-items: center;
 }
 .sun img {
-  display: none;
+  width: 39px;
 }
 .sun__rise {
   display: flex;
   align-items: center;
+  gap: 0.5em;
 }
 .sun__set {
   display: flex;
   align-items: center;
+  gap: 0.5em;
 }
 
 section#temp-hours {

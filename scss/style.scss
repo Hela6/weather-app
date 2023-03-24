@@ -61,7 +61,7 @@ main {
     flex-direction: row;
 
     img {
-      display: none;
+      width: 15px;
     }
   }
 }
@@ -71,14 +71,20 @@ main {
   justify-content: space-between;
   align-items: center;
 
+  img {
+    width: 39px;
+  }
+
   &__rise {
     display: flex;
     align-items: center;
+    gap: 0.5em;
   }
 
   &__set {
     display: flex;
     align-items: center;
+    gap: 0.5em;
   }
 }
 
