@@ -94,3 +94,6 @@ async function getWeatherData(long, lat) {
     section.append(div);
   }
 }
+
+
+
