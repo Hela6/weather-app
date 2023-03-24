@@ -88,10 +88,10 @@ async function getWeatherData(long, lat) {
     let div = document.createElement("div");
     div.classList.add("hour");
     div.innerHTML = `
-    <p>${convertTime(data.list[i].dt)}</p>
-    ${weatherConditions(data.list[i].weather[0].main)}
-    <p>${Math.floor(data.list[i].main.temp)}&deg;</p>
-    `;
+      <p>${convertTime(data.list[i].dt)}</p>
+      ${weatherConditions(data.list[i].weather[0].main)}
+      <p>${Math.floor(data.list[i].main.temp)}&deg;</p>
+      `;
     section.append(div);
   }
   // WEATHER CONDITIONS
@@ -104,6 +104,6 @@ async function getWeatherData(long, lat) {
     } else {
       console.log("Coucou je passe par là");
     }
-    return image;
+    return image.outerHTML;
   }
 }
