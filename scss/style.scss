@@ -18,6 +18,7 @@ main {
   width: 80%;
   height: 100vh;
   margin: 2em auto;
+  @include font-size;
 
   section {
     padding: 2em 0;
@@ -59,6 +60,7 @@ main {
     display: flex;
     align-items: center;
     flex-direction: row;
+    gap: 0.5em;
 
     img {
       width: 15px;
