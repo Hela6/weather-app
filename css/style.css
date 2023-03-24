@@ -16,6 +16,7 @@ main {
   width: 80%;
   height: 100vh;
   margin: 2em auto;
+  font-size: clamp(0.875rem, 1vw, 1rem);
 }
 main section {
   padding: 2em 0;
@@ -53,11 +54,12 @@ main section {
   display: flex;
   align-items: center;
   flex-direction: row;
+  gap: 0.5em;
 }
 .infos .humidity img,
 .infos .pressure img,
 .infos .wind img {
-  display: none;
+  width: 15px;
 }
 
 .sun {
@@ -66,15 +68,17 @@ main section {
   align-items: center;
 }
 .sun img {
-  display: none;
+  width: 39px;
 }
 .sun__rise {
   display: flex;
   align-items: center;
+  gap: 0.5em;
 }
 .sun__set {
   display: flex;
   align-items: center;
+  gap: 0.5em;
 }
 
 section#temp-hours {
