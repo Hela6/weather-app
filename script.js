@@ -4,20 +4,26 @@ let weather = document.querySelector(".localisation button");
 let humidity = document.querySelector(".humidity p");
 let pressure = document.querySelector(".pressure p");
 let wind = document.querySelector(".wind p");
-let sunrise = document.querySelector(".sun__rise");
-let sunset = document.querySelector(".sun__set");
+let sunrise = document.querySelector(".sun__rise > p");
+let sunset = document.querySelector(".sun__set > p");
 let today = document.querySelector("h4");
 let hour = document.querySelectorAll(".hour");
 let section = document.querySelector("#temp-hours");
 
 // TEMP ICONS
 let imgArrayDay = [
-  "./img/sun.png",
-  "./img/cloud.png",
-  "./img/cloudy.png",
-  "./img/rainy.png",
-  "./img/storm.png",
-  "./img/snowy.png",
+  "./img/sun.png",//Clear
+  "./img/cloud.png",//Clouds
+  "./img/rainy.png",//Rain and Drizzle
+  "./img/storm.png",//Thunderstorm
+  "./img/snowy.png",//Snow
+  "./img/loading",
+  "./img/warning.png",//Mist, Smoke, Haze, Dust, Fog, Sand, Ash, Squall, Tornado
+  "./img/sunrise",
+  "./img/sunset",
+  "./img/humidity.png",
+  "./img/pressure.png",
+  "./img/wind.png"
 ];
 
 // IS GEOLOCALISATION ON ?
@@ -97,13 +103,22 @@ async function getWeatherData(long, lat) {
   // WEATHER CONDITIONS
   function weatherConditions(weatherPath) {
     let image = document.createElement("img");
-    if (weatherPath === "Clouds") {
+    if (weatherPath === "Clear") {
       image.src = imgArrayDay[0];
-    } else if (weatherPath === "Clear") {
+    } else if (weatherPath === "Clouds") {
       image.src = imgArrayDay[1];
+    } else if (weatherPath === "Rain" || "Drizzle") {
+      image.src = imgArrayDay[2];
+    } else if (weatherPath === "Thunderstorm") {
+      image.src = imgArrayDay[3];
+    } else if (weatherPath === "Snow") {
+      image.src = imgArrayDay[4];
     } else {
-      console.log("Coucou je passe par là");
+    image.src = imgArrayDay[6];
     }
     return image.outerHTML;
   }
 }
+
+
+
