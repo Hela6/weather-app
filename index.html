@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <script src="script.js" defer></script>
     <title>Weather app</title>
 </head>
 
@@ -17,9 +16,9 @@
             <div class="localisation">
                 <h2></h2>
                 <p></p>
-                <button></button>
+                <button type="button"></button>
             </div>
-            <img src="./img/meteo.png" alt="temp-illustration">
+            <img src="./img/loading.png" alt="weather-illustration">
         </section>
         <!-- SCIENTIFIC INFOS -->
         <section class="infos">
@@ -39,11 +38,11 @@
         <!-- SUNRISE AND SUNSET -->
         <section class="sun">
             <div class="sun__rise">
-                <img src="./img/sunrise.png" alt="cc">
+                <div class="circle" id="sunrise"></div>
                 <p></p>
             </div>
             <div class="sun__set">
-                <img src="./img/sunset.png" alt="cc">
+                <div class="circle" id="sunset"></div>
                 <p></p>
             </div>
         </section>
@@ -52,6 +51,7 @@
         <section id="temp-hours">
         </section>
     </main>
+    <script src="script.js"></script>
 </body>
 
 </html>
