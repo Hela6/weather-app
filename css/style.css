@@ -120,7 +120,7 @@ div.container div.days p {
   align-self: center;
 }
 div.container div.days p.temp {
-  font-size: 3em;
+  font-size: 2.5em;
 }
 div.container div.days p.day_name {
   grid-column: span 2;
