@@ -1,3 +1,4 @@
+let dailyMeteo = document.querySelector(".daily-meteo img");
 let city = document.querySelector(".localisation h2");
 let temp = document.querySelector(".localisation p");
 let weather = document.querySelector(".localisation button");
@@ -11,19 +12,17 @@ let hour = document.querySelectorAll(".hour");
 let section = document.querySelector("#temp-hours");
 
 // TEMP ICONS
-let imgArrayDay = [
-  "./img/sun.png",//Clear
-  "./img/cloud.png",//Clouds
-  "./img/rainy.png",//Rain and Drizzle
-  "./img/storm.png",//Thunderstorm
-  "./img/snowy.png",//Snow
+const imgArrayDay = [
+  "./img/sun.png", //Clear
+  "./img/clouds.png", //Clouds
+  "./img/rain.png", //Rain and Drizzle
+  "./img/storm.png", //Thunderstorm
+  "./img/snow.png", //Snow
   "./img/loading",
-  "./img/warning.png",//Mist, Smoke, Haze, Dust, Fog, Sand, Ash, Squall, Tornado
-  "./img/sunrise",
-  "./img/sunset",
+  "./img/warning.png", //Mist, Smoke, Haze, Dust, Fog, Sand, Ash, Squall, Tornado
   "./img/humidity.png",
   "./img/pressure.png",
-  "./img/wind.png"
+  "./img/wind.png",
 ];
 
 // IS GEOLOCALISATION ON ?
@@ -53,6 +52,22 @@ async function getWeatherData(long, lat) {
   console.log(data);
 
   // INJECT DATA
+  let todayWeather = data.list[0].weather[0].main;
+
+  if (todayWeather === "Clear") {
+    dailyMeteo.src = imgArrayDay[0];
+  } else if (todayWeather === "Clouds") {
+    dailyMeteo.src = imgArrayDay[1];
+  } else if (todayWeather === "Rain" || "Drizzle") {
+    dailyMeteo.src = imgArrayDay[2];
+  } else if (todayWeather === "Thunderstorm") {
+    dailyMeteo.src = imgArrayDay[3];
+  } else if (todayWeather === "Snow") {
+    dailyMeteo.src = imgArrayDay[4];
+  } else {
+    dailyMeteo.src = imgArrayDay[6];
+  }
+
   city.innerHTML = `${data.city.name}`;
   temp.innerHTML = Math.floor(`${data.list[0].main.temp}`) + "&deg;";
   weather.innerHTML = `${data.list[0].weather[0].main}`;
@@ -69,7 +84,8 @@ async function getWeatherData(long, lat) {
       date.getHours();
       return `${hours}h`;
     } else {
-      return `${hours}h${minutes.toLocaleString()}`;
+      let formattedMinutes = (minutes < 10 ? "0" : "") + minutes;
+      return `${hours}h${formattedMinutes}`;
     }
   };
 
@@ -114,7 +130,7 @@ async function getWeatherData(long, lat) {
     } else if (weatherPath === "Snow") {
       image.src = imgArrayDay[4];
     } else {
-    image.src = imgArrayDay[6];
+      image.src = imgArrayDay[6];
     }
     return image.outerHTML;
   }
