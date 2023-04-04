@@ -151,7 +151,7 @@ div.container div.days p.temp {
 }
 div.container div.days p.day_name {
   grid-column: span 2;
-  font-size: 1.4em;
+  font-size: 1.1em;
   padding-top: 6vw;
 }
 div.container div.days img {
@@ -159,5 +159,6 @@ div.container div.days img {
   height: 15vw;
   margin: 4vw 4vw auto auto;
 }
+
 
 /*# sourceMappingURL=style.css.map */

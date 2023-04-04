@@ -116,61 +116,23 @@ async function getWeatherData(long, lat) {
       `;
     section.append(div);
   }
-  // WEATHER CONDITIONS
-  function weatherConditions(weatherPath) {
-    let image = document.createElement("img");
-    if (weatherPath === "Clear") {
-      image.src = imgArrayDay[0];
-    } else if (weatherPath === "Clouds") {
-      image.src = imgArrayDay[1];
-    } else if (weatherPath === "Rain" || "Drizzle") {
-      image.src = imgArrayDay[2];
-    } else if (weatherPath === "Thunderstorm") {
-      image.src = imgArrayDay[3];
-    } else if (weatherPath === "Snow") {
-      image.src = imgArrayDay[4];
-    } else {
-      image.src = imgArrayDay[6];
-    }
-    return image.outerHTML;
+//   // WEATHER CONDITIONS
+function weatherConditions(weatherPath) {
+  let image = document.querySelector("img");
+  if (weatherPath === "Clear") {
+    image.src = imgArrayDay[0];
+  } else if (weatherPath === "Clouds") {
+    image.src = imgArrayDay[1];
+  } else if (weatherPath === "Rain" || "Drizzle") {
+    image.src = imgArrayDay[2];
+  } else if (weatherPath === "Thunderstorm") {
+    image.src = imgArrayDay[3];
+  } else if (weatherPath === "Snow") {
+    image.src = imgArrayDay[4];
+  } else {
+    image.src = imgArrayDay[6];
   }
+  return image.outerHTML;
 }
 
-// NEXT DAYS ------------------------------------------------
-let todayTemp = document.querySelector(".today > .temp");
-let todayWeather = document.querySelector(".today img");
-let todayHumidity = document.querySelector(".today > .hum");
-let todayWind = document.querySelector(".today > .wind");
-let todayDayName = document.querySelector(".today > .day_name");
-
-// // INJECT DATA
-todayTemp.innerHTML = Math.floor(`${data.list[0].main.temp}`) + "&deg;";
-todayWeather.innerHTML = `${data.list[0].weather[0].main}`;
-todayhumidity.innerHTML = `${data.list[0].main.humidity} %`;
-todayWind.innerHTML = `${data.list[0].wind.speed} km`;
-
-// DISPLAY TODAY'S DAY NAME
-todayDayName.innerHTML =
-new Date().toLocaleDateString("fr-FR", {
-  weekday: "long"
-});
-
-// GENERATE THE FIVE NEXT DAYS
-function displayNextFiveDays(data) {
-  const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-  const today = new Date().getDay();
-  
-  for (let i = 0; i < 5; i++) {
-    const nextDayIndex = (today + i + 1) % 7;
-    const index = i * 8;
-    const div = document.createElement("div");
-    div.classList.add("days");
-    div.innerHTML = `<p class="temp">${Math.floor(data.list[index].main.temp)}&deg;</p>
-                      ${weatherConditions(data.list[i].weather[index].main)}
-                     <p class="days">${daysOfWeek[nextDayIndex]}</p>
-                     <p class="hum">${data.list[index].main.humidity} %;</p>
-                     <p class="wind">${data.list[index].wind.speed} km;</p>`;
-    document.querySelector(".container").appendChild(div);
-  }
 }
-
