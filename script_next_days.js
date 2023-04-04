@@ -2,15 +2,12 @@
 // TEMP ICONS
 const imgArrayDay = [
   "./img/sun.png", //Clear
-  "./img/clouds.png", //Clouds
+  "./img/cloud.png", //Clouds
   "./img/rain.png", //Rain and Drizzle
   "./img/storm.png", //Thunderstorm
   "./img/snow.png", //Snow
   "./img/loading",
   "./img/warning.png", //Mist, Smoke, Haze, Dust, Fog, Sand, Ash, Squall, Tornado
-  "./img/humidity.png",
-  "./img/pressure.png",
-  "./img/wind.png",
 ];
 
 // IS GEOLOCALISATION ON ?
@@ -74,15 +71,25 @@ todayHumidity.innerHTML = `${data.list[0].main.humidity} %`;
 todayWind.innerHTML = `${data.list[0].wind.speed} km`;
 
 // DISPLAY TODAY'S DAY NAME
-todayDayName.innerHTML = 
-new Date().toLocaleDateString("fr-FR", {
+// Create a new Date object
+const date = new Date().toLocaleDateString("fr-FR", {
   weekday: "long"
 });
+
+// Get the date in a string format
+const dateString = date.toString();
+
+// Convert the date string to uppercase
+const uppercaseDateString = dateString.toUpperCase();
+
+todayDayName.innerHTML = uppercaseDateString;
+
+
 
 // GENERATE THE FIVE NEXT DAYS
 function displayNextFiveDays(data) {
     // const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    const daysOfWeek = ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"];
+    const daysOfWeek = ["DIMANCHE", "LUNDI", "MARDI", "MERCREDI", "JEUDI", "VENDREDI", "SAMEDI"];
     const today = new Date().getDay();
   
     for (let i = 0; i < 5; i++) {

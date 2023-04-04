@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap");
 .sun .circle {
   width: 20px;
   height: 20px;
@@ -9,12 +9,12 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Comfortaa", cursive;
   color: #fff;
 }
 
 body {
-  background-color: #081b24;
+  background-color: #1A1A1A;
 }
 
 /* TEMP OF THE DAY PAGE */
@@ -128,18 +128,20 @@ section#temp-hours .hour img {
 /* NEXT DAYS PAGE */
 div.container {
   display: grid;
-  grid-template-columns: repeat(2, 42vw);
-  grid-template-rows: repeat(3, 42vw);
+  grid-template-columns: repeat(2, 45vw);
+  grid-template-rows: repeat(3, 45vw);
   justify-content: center;
+  align-items: center;
   margin: 100px auto;
-  gap: 2vw;
+  gap: 3vw;
+  font-size: clamp(0.875rem, 1vw, 1rem);
 }
 div.container div.days {
-  background: #26222c;
+  background: rgba(64, 74, 80, 0.7137254902);
   border-radius: 20px;
   display: grid;
-  grid-template-columns: 21vw 21vw;
-  grid-template-rows: 18vw 12vw 12vw;
+  grid-template-columns: 22.5vw 22.5vw;
+  grid-template-rows: 20vw 13vw 12vw;
   gap: 0;
 }
 div.container div.days p {
@@ -151,14 +153,16 @@ div.container div.days p.temp {
 }
 div.container div.days p.day_name {
   grid-column: span 2;
-  font-size: 1.1em;
-  padding-top: 6vw;
+  padding-left: 3vw;
+  justify-self: flex-start;
+  align-self: flex-start;
+  color: #b1cbf7;
+  font-weight: bold;
 }
 div.container div.days img {
   width: 15vw;
   height: 15vw;
   margin: 4vw 4vw auto auto;
 }
-
 
 /*# sourceMappingURL=style.css.map */

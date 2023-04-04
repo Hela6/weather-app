@@ -12,7 +12,7 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Comfortaa', cursive;
   color: $secondary-color;
 }
 
@@ -151,18 +151,20 @@ section#temp-hours {
 
 div.container {
   display: grid;
-  grid-template-columns: repeat(2, 42vw);
-  grid-template-rows: repeat(3, 42vw);
+  grid-template-columns: repeat(2, 45vw);
+  grid-template-rows: repeat(3, 45vw);
   justify-content: center;
+  align-items: center;
   margin: 100px auto;
-  gap: 2vw;
+  gap: 3vw;
+  @include font-size;
 
   div.days {
-    background: #26222c;
+    background: #404a50b6;
     border-radius: 20px;
     display: grid;
-    grid-template-columns: 21vw 21vw;
-    grid-template-rows: 18vw 12vw 12vw;
+    grid-template-columns: 22.5vw 22.5vw;
+    grid-template-rows: 20vw 13vw 12vw;
     gap: 0;
 
     p {
@@ -170,13 +172,16 @@ div.container {
       align-self: center;
 
       &.temp {
-        font-size: 3em;
+        font-size: 2.5em;
       }
 
       &.day_name {
         grid-column: span 2;
-        font-size: 1.4em;
-        padding-top: 6vw;
+        padding-left: 3vw;
+        justify-self: flex-start;
+        align-self: flex-start;
+        color: $ternary-color;
+        font-weight: bold;
       }
     }
 
