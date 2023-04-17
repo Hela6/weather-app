@@ -18,7 +18,37 @@
 
 body {
   background-color: $primary-color;
+  max-width: 414px;
+  margin: auto;
 }
+
+ /* CHANGE PAGE */
+ a {
+  width: 185px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: $ternary-color;
+  border: none;
+  border-radius: 2em;
+  background-color: #22202eb6;
+  margin: 50px auto;
+  box-shadow: 2px 2px 4px 1px #5f7191b6;
+} 
+
+a:active {
+  box-shadow: 0px 0px 1px 0px;
+  transform: translateX(1%) translateY(1%);
+  transition: transform 0.3s ease-in-out;
+  
+}
+
+a > img {
+  width: 30px;
+  margin: 5px;
+}
+
 
 /* TEMP OF THE DAY PAGE */
 main {
@@ -150,21 +180,26 @@ section#temp-hours {
 /* NEXT DAYS PAGE */
 
 div.container {
+  width: 320px;
   display: grid;
-  grid-template-columns: repeat(2, 45vw);
-  grid-template-rows: repeat(3, 45vw);
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   justify-content: center;
   align-items: center;
   margin: 100px auto;
-  gap: 3vw;
+  gap: 10px;
   @include font-size;
 
   div.days {
-    background: #404a50b6;
+    width: 120px;
+    height: 120px;
+    // background: #0d0e0fb6;
     border-radius: 20px;
+    box-shadow: 2px 2px 4px 1px #5f7191b6;
+    padding: 15px;
     display: grid;
-    grid-template-columns: 22.5vw 22.5vw;
-    grid-template-rows: 20vw 13vw 12vw;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     gap: 0;
 
     p {
@@ -177,7 +212,7 @@ div.container {
 
       &.day_name {
         grid-column: span 2;
-        padding-left: 3vw;
+        padding: 5px 0 0 5px;
         justify-self: flex-start;
         align-self: flex-start;
         color: $ternary-color;
@@ -186,9 +221,9 @@ div.container {
     }
 
     img {
-      width: 15vw;
-      height: 15vw;
-      margin: 4vw 4vw auto auto;
+      width: 80%;
+      margin: auto auto;
     }
   }
+ 
 }
