@@ -101,8 +101,8 @@ function displayNextFiveDays(data) {
       div.innerHTML = `<p class="temp">${Math.floor(data.list[index].main.temp)}&deg;</p>
                         ${weatherConditions(data.list[index].weather[0].main)}
                        <p class="days day_name">${daysOfWeek[nextDayIndex]}</p>
-                       <p class="hum">${data.list[index].main.humidity} %</p>
-                       <p class="wind">${data.list[index].wind.speed} km</p>`;
+                       <p class="hum">${data.list[index].main.humidity}%</p>
+                       <p class="wind">${data.list[index].wind.speed}m/s</p>`;
 
       document.body.querySelector(".container").appendChild(div);
     }

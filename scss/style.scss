@@ -12,66 +12,35 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Comfortaa', cursive;
+  font-family: 'Comfortaa', sans-serif;
   color: $secondary-color;
 }
 
 body {
-  background-color: $primary-color;
-  max-width: 414px;
-  margin: auto;
-}
-
- /* CHANGE PAGE */
- a {
-  width: 185px;
+  height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  color: $ternary-color;
-  border: none;
-  border-radius: 2em;
-  background-color: #22202eb6;
-  margin: 50px auto;
-  box-shadow: 2px 2px 4px 1px #5f7191b6;
-} 
-
-a:active {
-  box-shadow: 0px 0px 1px 0px;
-  transform: translateX(1%) translateY(1%);
-  transition: transform 0.3s ease-in-out;
-  
+  flex-direction: column;
+  background-color: $primary-color;
+  max-width: 320px;
+  margin: auto;
+  padding:2em;
+  @include font-size;
 }
-
-a > img {
-  width: 30px;
-  margin: 5px;
-}
-
 
 /* TEMP OF THE DAY PAGE */
-main {
-  width: 80%;
-  height: 100vh;
-  margin: 2em auto;
 
   h4 {
-    color: #8fa1ae;
+    color: #a1a1a1;
     font-weight: 500;
   }
-
-  section {
-    padding: 2em 0;
-  }
-}
 
 .daily-meteo {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 0.5em;
+  gap:0.5em;
 
   .localisation {
     display: flex;
@@ -94,7 +63,6 @@ main {
 
   img {
     width: 50%;
-    // filter: drop-shadow(0px 0px 20px rgba(255, 255, 255, 0.3));
   }
 }
 
@@ -102,7 +70,7 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  @include font-size;
+  padding:2em 0;
 
   .humidity,
   .pressure,
@@ -113,7 +81,7 @@ main {
     gap: 0.5em;
 
     img {
-      width: 15px;
+      width: 18px;
     }
   }
 }
@@ -121,7 +89,7 @@ main {
 .sun {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  padding:2em 0 3em 0;
 
   img {
     width: 35px;
@@ -158,6 +126,7 @@ section#temp-hours {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding:1em 0 2em 0;
   gap: 1em;
 
   .hour {
@@ -172,58 +141,75 @@ section#temp-hours {
     }
 
     img {
-      width: 100%;
+      width: 75%;
     }
   }
 }
 
+/* CHANGE PAGE */
+a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding:1em;
+  text-decoration: none;
+  color: white;
+  border: none;
+  border-radius: 2em;
+  background-color: rgba(53, 51, 97, 0.5);
+  margin: 0 auto;
+  transition: transform 0.25s ease-in-out;
+
+  &:hover {
+    transform: scale(0.97);
+  }
+}
+
+
 /* NEXT DAYS PAGE */
 
 div.container {
-  width: 320px;
+  width:80%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(3, 1fr);
   justify-content: center;
-  align-items: center;
-  margin: 100px auto;
-  gap: 10px;
+  margin:2em auto;
+  gap: 1.5em;
   @include font-size;
 
   div.days {
-    width: 120px;
-    height: 120px;
-    // background: #0d0e0fb6;
-    border-radius: 20px;
-    box-shadow: 2px 2px 4px 1px #5f7191b6;
-    padding: 15px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    gap: 0;
+    grid-template-rows: repeat(2, 1fr);
+    border-radius: 1em;
+    background: rgba(80, 80, 80, 0.25);
+    padding: 15px;
 
     p {
-      justify-self: center;
       align-self: center;
 
       &.temp {
-        font-size: 2.5em;
+        font-size: 2em;
+      }
+
+      &.wind {
+        justify-self: end;
       }
 
       &.day_name {
         grid-column: span 2;
-        padding: 5px 0 0 5px;
+        padding-top: 5px;
         justify-self: flex-start;
         align-self: flex-start;
         color: $ternary-color;
         font-weight: bold;
       }
     }
-
     img {
       width: 80%;
       margin: auto auto;
     }
   }
- 
+
 }

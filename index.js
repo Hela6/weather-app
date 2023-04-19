@@ -18,7 +18,6 @@ const imgArrayDay = [
   "./img/rain.png", //Rain and Drizzle
   "./img/storm.png", //Thunderstorm
   "./img/snow.png", //Snow
-  "./img/loading",
   "./img/warning.png", //Mist, Smoke, Haze, Dust, Fog, Sand, Ash, Squall, Tornado
   "./img/humidity.png",
   "./img/pressure.png",
@@ -65,15 +64,15 @@ async function getWeatherData(long, lat) {
   } else if (todayWeather === "Snow") {
     dailyMeteo.src = imgArrayDay[4];
   } else {
-    dailyMeteo.src = imgArrayDay[6];
+    dailyMeteo.src = imgArrayDay[5];
   }
 
   city.innerHTML = `${data.city.name}`;
   temp.innerHTML = Math.floor(`${data.list[0].main.temp}`) + "&deg;";
   weather.innerHTML = `${data.list[0].weather[0].main}`;
   humidity.innerHTML = `${data.list[0].main.humidity} %`;
-  pressure.innerHTML = `${data.list[0].main.pressure} mBar`;
-  wind.innerHTML = `${data.list[0].wind.speed} km`;
+  pressure.innerHTML = `${data.list[0].main.pressure}hPa`;
+  wind.innerHTML = `${data.list[0].wind.speed}m/s`;
 
   // FUNCTION TO CONVERT UNIX TIME TO TIME FORMAT
   const convertTime = function formatTime(unixTime) {
@@ -116,23 +115,23 @@ async function getWeatherData(long, lat) {
       `;
     section.append(div);
   }
-//   // WEATHER CONDITIONS
-function weatherConditions(weatherPath) {
-  let image = document.querySelector("img");
-  if (weatherPath === "Clear") {
-    image.src = imgArrayDay[0];
-  } else if (weatherPath === "Clouds") {
-    image.src = imgArrayDay[1];
-  } else if (weatherPath === "Rain" || "Drizzle") {
-    image.src = imgArrayDay[2];
-  } else if (weatherPath === "Thunderstorm") {
-    image.src = imgArrayDay[3];
-  } else if (weatherPath === "Snow") {
-    image.src = imgArrayDay[4];
-  } else {
-    image.src = imgArrayDay[6];
+  //   // WEATHER CONDITIONS
+  function weatherConditions(weatherPath) {
+    let image = document.querySelector("img");
+    if (weatherPath === "Clear") {
+      // image.src = imgArrayDay[0];
+      image.alt = "bonjour"
+    } else if (weatherPath === "Clouds") {
+      image.src = imgArrayDay[1];
+    } else if (weatherPath === "Rain" || "Drizzle") {
+      image.src = imgArrayDay[2];
+    } else if (weatherPath === "Thunderstorm") {
+      image.src = imgArrayDay[3];
+    } else if (weatherPath === "Snow") {
+      image.src = imgArrayDay[4];
+    } else {
+      image.src = imgArrayDay[5];
+    }
+    return image.outerHTML;
   }
-  return image.outerHTML;
-}
-
 }
